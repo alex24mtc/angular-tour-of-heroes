@@ -13,7 +13,7 @@ import { MessageService } from '../services/message.service';
 export class HeroesComponent implements OnInit {
 
   heroes: Hero[] = [];  //es la matriz de objetos de mock-heroes
-  selectedHero?: Hero;    // por defecto no esta seleccionado el heroe
+  
  
 
   constructor(private heroService:HeroService,private messageService:MessageService) { } //enlaza con el servicio hero.service
@@ -22,13 +22,6 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();  //justo al cargar la página se cargará el servicio
   }
 
-    // cuando se selecciona un heroe
-
-    onSelect(hero: Hero): void { 
-      this.selectedHero = hero; // cuando clicas se actualiza la información automaticamente
-      this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-
-    }
 
 
     /*    sin recibir observable (sin .subscribe)

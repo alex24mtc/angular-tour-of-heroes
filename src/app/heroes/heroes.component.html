@@ -1,15 +1,21 @@
 
 <h2>My Heroes</h2>
 <ul class="heroes">
-    <li *ngFor="let hero of heroes" 
-    [class.selected]="hero === selectedHero" (click)="onSelect(hero)"> <!--te genera todos los heroes de la matriz heroes del mock heroes-->
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
   </li>
 </ul>
-<!--[class.selected] significa que se aplicara solo la clase cuando se seleccione el heroe -->
 
+
+<!--[hero]
 <app-hero-detail [hero]="selectedHero"></app-hero-detail> 
 
-<!--[hero]  es un @Input, es decir, el componente padre, 
+  es un @Input, es decir, el componente padre, 
   "heroes.component" le envia los datos selectedHero (el onSelect) al componente hijo "hero-detail-component", 
-  por eso esta aqui el selector "app-hero-detail"-->
+  por eso esta aqui el selector "app-hero-detail"
+-->
+
+  
+<!--[class.selected] significa que se aplicara solo la clase cuando se seleccione el heroe -->
