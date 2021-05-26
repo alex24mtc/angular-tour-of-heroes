@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../interfaces/hero';
 import { HEROES } from '../../mock-heroes';
+import { HeroService } from '../services/hero.service';
 
 
 
@@ -11,21 +12,26 @@ import { HEROES } from '../../mock-heroes';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes = HEROES;  //es la matriz de objetos de mock-heroes
+  heroes: Hero[] = [];  //es la matriz de objetos de mock-heroes
   selectedHero?: Hero;    // por defecto no esta seleccionado el heroe
+ 
 
-
-  
-
-  constructor() { }
+  constructor(private heroService:HeroService) { } //enlaza con el servicio hero.service
 
   ngOnInit(): void {
+    this.getHeroes();  //justo al cargar la página se cargará el servicio
   }
 
     // cuando se selecciona un heroe
 
     onSelect(hero: Hero): void { 
       this.selectedHero = hero; // cuando clicas se actualiza la información automaticamente
+    }
+
+
+    // funcion del Servicio "hero.service"
+    getHeroes(): void {
+      this.heroes = this.heroService.getHeroes();
     }
   
 
