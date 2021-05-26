@@ -29,11 +29,18 @@ export class HeroesComponent implements OnInit {
     }
 
 
-    // funcion del Servicio "hero.service"
+    /*    sin recibir observable (sin .subscribe)
     getHeroes(): void {
       this.heroes = this.heroService.getHeroes();
     }
-  
+    */
+
+
+    // funcion del Servicio "hero.service"
+    getHeroes(): void {
+      this.heroService.getHeroes()
+          .subscribe(heroes => this.heroes = heroes);
+    }  
 
 
 }
